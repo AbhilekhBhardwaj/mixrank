@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+/*
+ * Design tokens. Dark mode is a selected set of steps validated against the
+ * dark surface, not an automatic inversion of the light values.
+ */
+:root {
+  --page: #f9f9f7;
+  --surface: #fcfcfb;
+  --surface-sunken: #f2f1ec;
+  --ink: #0b0b0b;
+  --ink-secondary: #52514e;
+  --ink-muted: #898781;
+  --line: rgba(11, 11, 11, 0.1);
+  --grid: #e1e0d9;
+  --baseline: #c3c2b7;
+
+  /* Categorical slots 1 and 2 -- validated adjacent pair, light surface. */
+  --series-1: #2a78d6;
+  --series-2: #eb6834;
+  --series-1-soft: #cde2fb;
+  --series-2-soft: #fbdccf;
+
+  --good: #006300;
+  --critical: #d03b3b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:where(:not([data-theme="light"])) {
+    --page: #0d0d0d;
+    --surface: #1a1a19;
+    --surface-sunken: #232322;
+    --ink: #ffffff;
+    --ink-secondary: #c3c2b7;
+    --ink-muted: #898781;
+    --line: rgba(255, 255, 255, 0.1);
+    --grid: #2c2c2a;
+    --baseline: #383835;
+
+    --series-1: #3987e5;
+    --series-2: #d95926;
+    --series-1-soft: #184f95;
+    --series-2-soft: #6b2d13;
+
+    --good: #0ca30c;
+    --critical: #e66767;
+  }
+}
+
+:root[data-theme="dark"] {
+  --page: #0d0d0d;
+  --surface: #1a1a19;
+  --surface-sunken: #232322;
+  --ink: #ffffff;
+  --ink-secondary: #c3c2b7;
+  --ink-muted: #898781;
+  --line: rgba(255, 255, 255, 0.1);
+  --grid: #2c2c2a;
+  --baseline: #383835;
+
+  --series-1: #3987e5;
+  --series-2: #d95926;
+  --series-1-soft: #184f95;
+  --series-2-soft: #6b2d13;
+
+  --good: #0ca30c;
+  --critical: #e66767;
+}
+
+@theme inline {
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-sunken: var(--surface-sunken);
+  --color-ink: var(--ink);
+  --color-ink-secondary: var(--ink-secondary);
+  --color-ink-muted: var(--ink-muted);
+  --color-line: var(--line);
+  --color-grid: var(--grid);
+  --color-baseline: var(--baseline);
+  --color-series-1: var(--series-1);
+  --color-series-2: var(--series-2);
+  --color-series-1-soft: var(--series-1-soft);
+  --color-series-2-soft: var(--series-2-soft);
+  --color-good: var(--good);
+  --color-critical: var(--critical);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+html {
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  html:where(:not([data-theme="light"])) {
+    color-scheme: dark;
+  }
+}
+
+/* Safari keeps its own disclosure triangle unless this is hidden explicitly. */
+summary::-webkit-details-marker {
+  display: none;
+}
+
+body {
+  background: var(--page);
+  color: var(--ink);
+  font-family: var(--font-geist-sans), system-ui, -apple-system, "Segoe UI", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
